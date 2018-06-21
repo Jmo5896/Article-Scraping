@@ -1,6 +1,11 @@
 //dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
+var mongoose = require('mongoose');
+
+//talk with models
+var db = require('./models');
 
 //setup express
 var app = express();
@@ -11,7 +16,8 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-//set up body parser
+//set up middleware
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -27,6 +33,8 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 //routes
+require('./routes/html_routes.js')(app);
+require('./routes/routes.js')(app);
 
 //set server to listen
 app.listen(PORT, function() {

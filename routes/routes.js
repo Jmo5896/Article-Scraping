@@ -20,10 +20,10 @@ module.exports = function(app) {
 
     app.get('/save', function(req, res) {
         db.Article.create(result).then(function(dbArticle) {
-                    console.log(dbArticle);
-                }).catch(function(error) {
-                    return res.json(error);
-                });
+            console.log(dbArticle);
+        }).catch(function(error) {
+            return res.json(error);
+        });
     });
 
     app.get("/articles", function(req, res) {

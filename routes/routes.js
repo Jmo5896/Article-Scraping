@@ -18,10 +18,10 @@ module.exports = function(app) {
         }); 
     });
 
-    app.get('/save', function(req, res) {
+    app.post('/save', function(req, res) {
         
         db.Article.create(req.body).then(function(response) {
-            console.log('requin dat body: ' + req.body);
+            console.log('requin dat body: ' + req.body.articleData);
             res.status(201).end();
           }).catch(function(err) {
             console.log(err);

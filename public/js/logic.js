@@ -37,11 +37,11 @@ $(document).ready(function() {
         console.log(articleData);
         
         $.ajax({
-            method: "GET",
+            method: "POST",
             url: "/save",
             data: articleData
         }).then(function(data) {
-            console.log('data ' + data[0]);
+            console.log('data ' + data);
         }).catch(function(err) {
             console.log(err);
         });
@@ -59,14 +59,24 @@ $(document).ready(function() {
 
     $('.saved').on('click', function(event) {
         event.preventDefault();
-    
-        $.get('/savedArticles').then(function(data) {
-            window.location.href = '/savedArticles';
-            console.log(data);
+        window.location.href = '/savedArticles';
+    });
+    $.get('/articles').then(function(data) {
+            data.forEach(article => {
+                $('#savedArticles').append(`
+                <div class="card">
+                    <div class="card-header">
+                        Article
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href = '${article.link}'>${article.title}</a></h5>
+                    </div>
+                </div>
+                `);
+            }); 
         }).catch(function(err) {
             console.log(err);
-        });
-    });
+        });        
 
  //NO CODE BELOW THIS LINE
 });

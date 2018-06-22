@@ -41,7 +41,7 @@ $(document).ready(function() {
             url: "/save",
             data: articleData
         }).then(function(data) {
-            console.log('data shit ' + data[0]);
+            console.log('data ' + data[0]);
         }).catch(function(err) {
             console.log(err);
         });

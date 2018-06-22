@@ -19,11 +19,24 @@ module.exports = function(app) {
     });
 
     app.get('/save', function(req, res) {
-        db.Article.create(result).then(function(dbArticle) {
-                    console.log(dbArticle);
-                }).catch(function(error) {
-                    return res.json(error);
-                });
+        
+        db.Article.create(req.body.article).then(function(response) {
+            console.log('requin dat body: ' + req.body.article);
+            res.status(201).end();
+          }).catch(function(err) {
+            console.log(err);
+            res.json(err);
+          });
+    //   // Create a new Article using the `result` object built from scraping
+    //   db.Article.create(result)
+    //     .then(function(dbArticle) {
+    //       // View the added result in the console
+    //       console.log(dbArticle);
+    //     })
+    //     .catch(function(err) {
+    //       // If an error occurred, send it to the client
+    //       return res.json(err);
+    //     });
     });
 
     app.get("/articles", function(req, res) {

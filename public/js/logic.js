@@ -16,6 +16,7 @@ $(document).ready(function() {
                         <button data-link = '${article.link}' data-title = '${article.title}' data-id = '${data.indexOf(article)}' class="btn btn-primary article" >Save Article</button>
                     </div>
                 </div>
+                <br>
                `);
             });
             console.log(data);
@@ -71,12 +72,25 @@ $(document).ready(function() {
                     <div class="card-body">
                         <h5 class="card-title"><a href = '${article.link}'>${article.title}</a></h5>
                     </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="comments">Save your comments below</label>
+                            <textarea class="form-control" id="comments" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class = 'submit' class="btn btn-primary">Save</button>
+                    </form>
                 </div>
+                <br>
                 `);
             }); 
         }).catch(function(err) {
             console.log(err);
-        });        
+        });   
+        
+        $('#savedArticles').on('click', '.submit', function(event) {
+            event.preventDefault();
+        });
 
  //NO CODE BELOW THIS LINE
 });

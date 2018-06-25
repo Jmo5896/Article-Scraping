@@ -6,14 +6,13 @@ $(document).ready(function() {
             // window.location.href = '/';
             data.forEach(article => {
                $('#articles').append(`
-               <div class="card">
+               <div class="card rounded">
                     <div class="card-header">
-                        Article
+                        <a href = '${article.link}'>${article.title}</a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"><a href = '${article.link}'>${article.title}</a></h5>
                         <p class="card-text">click the button to save</p>
-                        <button data-link = '${article.link}' data-title = '${article.title}' data-id = '${data.indexOf(article)}' class="btn btn-primary article" >Save Article</button>
+                        <button data-link = '${article.link}' data-title = '${article.title}' data-id = '${data.indexOf(article)}' class="btn btn-info article" >Save Article</button>
                     </div>
                 </div>
                 <br>
@@ -65,12 +64,12 @@ $(document).ready(function() {
     $.get('/articles').then(function(data) {
             data.forEach(article => {
                 $('#savedArticles').append(`
-                <div class="card">
+                <div class="card rounded">
                     <div class="card-header">
-                        Article
+                        <a href = '${article.link}'>${article.title}</a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"><a href = '${article.link}'>${article.title}</a></h5>
+                        <h5 class="card-title"></h5>
                     </div>
 
                     <form>
@@ -78,7 +77,7 @@ $(document).ready(function() {
                             <label for="comments">Save your comments below</label>
                             <textarea class="form-control" id="comments" rows="3"></textarea>
                         </div>
-                        <button type="submit" class = 'submit' class="btn btn-primary">Save</button>
+                        <button type="submit" class = 'submit btn btn-info' >Save</button>
                     </form>
                 </div>
                 <br>
@@ -88,7 +87,7 @@ $(document).ready(function() {
             console.log(err);
         });   
         
-        $('#savedArticles').on('click', '.submit', function(event) {
+        $('#savedArticles').on('submit', '.submit', function(event) {
             event.preventDefault();
         });
 

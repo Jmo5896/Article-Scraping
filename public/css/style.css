@@ -1,3 +1,20 @@
+html {
+    background-color: darkslategrey;
+}
+
 body {
-    background-color: azure;
+    background-color: darkslategrey;
+}
+
+
+.navbar {
+    background-color: darkgrey;
+}
+
+.card-header {
+    background-color: darkgrey;
+}
+
+a {
+   color: darkslategrey;
 }

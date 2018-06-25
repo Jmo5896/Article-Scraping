@@ -89,6 +89,9 @@ $(document).ready(function() {
         
         $('#savedArticles').on('submit', '.submit', function(event) {
             event.preventDefault();
+            $.post('/articles/:id').then(function(data) {
+                alert(data);
+            });
         });
 
  //NO CODE BELOW THIS LINE

@@ -23,20 +23,10 @@ module.exports = function(app) {
         db.Article.create(req.body).then(function(response) {
             console.log('requin dat body: ' + req.body.articleData);
             res.status(201).end();
-          }).catch(function(err) {
+        }).catch(function(err) {
             console.log(err);
             res.json(err);
-          });
-    //   // Create a new Article using the `result` object built from scraping
-    //   db.Article.create(result)
-    //     .then(function(dbArticle) {
-    //       // View the added result in the console
-    //       console.log(dbArticle);
-    //     })
-    //     .catch(function(err) {
-    //       // If an error occurred, send it to the client
-    //       return res.json(err);
-    //     });
+        });
     });
 
     app.get("/articles", function(req, res) {

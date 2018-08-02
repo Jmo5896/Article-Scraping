@@ -11,12 +11,9 @@ var ArticleSchema = new Schema({
   },
   link: {
     type: String,
-    required: true,
-    unique: true
   },
-  note: {
-    type: String,
-    ref: "Note"
+  summary: {
+    type: String
   }
 });
 

@@ -8,10 +8,11 @@ module.exports = function(app) {
         var results = [];
         axios.get('https://politics.theonion.com/').then(function(response) {
             var $ = cheerio.load(response.data);
-            $('h1.headline').each(function(i, element) {
+            $('article.postlist__item').each(function(i, element) {
                 var article = {};
-                article.title = $(this).children().text();
-                article.link = $(this).children().attr('href');
+                article.title = $(this).find('h1.headline').text().trim();
+                article.link = $(this).find('a.js_entry-link').attr('href');
+                article.summary = $(this).find('p').text().trim();
                 results.push(article);
             });
             res.json(results);

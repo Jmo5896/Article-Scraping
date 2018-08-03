@@ -56,7 +56,8 @@ $(document).ready(function() {
             url: "/save",
             data: articleData
         }).then(function(data) {
-            alert(data); 
+            console.log(data);
+            alert('Article Saved!!!'); 
         }).catch(function(err) {
             console.log(err);
         }); 

@@ -31,8 +31,7 @@ diplay all saved articles.
 [Title Demo](./gifs/link.gif)
 
 * When you click save a notification will appear and the article will then be saved to the database.
-[Save Demo Pt 1](./gifs/save01.gif) 
-[Save Demo Pt 2](./gifs/save02.gif)
+[Save Demo Pt 1](./gifs/save.gif) 
 
 # Built With
 * Node.js

@@ -12,30 +12,18 @@ $(document).ready(function() {
     }
 
     function articleGenerator() {
-        $.get('/scrape').then(function(data) {
-            data.forEach(article => {
-                
-                // if (!articleData.includes(article.title, 0)) {
-                    $('#articles').append(`
-                        <div class="card rounded">
-                            <div class="card-header">
-                                <a href = '${article.link}'>${article.title}</a>
-                            </div>
-                            <div class="card-body">
-                                <p>${article.summary}</p>
-                                <br>
-                                <p class="card-text">click the button to save</p>
-                                <button data-link = '${article.link}' data-title = '${article.title}' data-summary = '${article.summary}' data-id = '${data.indexOf(article)}' class="btn btn-info article" >Save Article</button>
-                            </div>
-                        </div>
-                        <br>
-                    `);
-                // } 
-            });
-        }).then(function(data) {
-            // cleardataBase();
+        $.get('/scrape').then(function() {
+            location.reload();
         }).catch(function(err) {
             console.log(err);
+        });
+        console.log('articleGenerator triggered');
+        $.ajax({
+            type: 'GET',
+            url: "/scrape" 
+        }).done(function() {
+            alert('scrape complete!');
+            location.reload();
         });
     }
 
@@ -44,11 +32,7 @@ $(document).ready(function() {
        
     }
 
-    $('.onion').on('click', function(event) {
-        event.preventDefault();
-        articleGenerator();
-        // setTimeout(cleardataBase, 5000);
-    });
+    $('.onion').on('click', articleGenerator);
 
     $('#articles').on('click', '.article', function(event) {
         event.preventDefault();

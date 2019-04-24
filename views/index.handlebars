@@ -1,22 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark rounded row">
-      
-      <div class = 'col-sm-2'>
-            <button class="nav-link btn btn-info saved" >Saved Articles <span class="sr-only">(current)</span></button>
+
+      <div class='col-sm-2'>
+            <button class="nav-link btn btn-info saved">Saved Articles <span class="sr-only">(current)</span></button>
       </div>
-      
-      <div class = 'col-sm-2'>
+
+      <div class='col-sm-2'>
             <button class="nav-link btn btn-info onion">Scrape Onion <span class="sr-only">(current)</span></button>
       </div>
 
 </nav>
 
 <h1>Article Scraper</h1>
-      <h2>Generate 20 articles from the onion when you press the "scrape onion" button.</h2>
-      
-      <div id="articles">      
+<h2>Generate 20 articles from the onion when you press the "scrape onion" button.</h2>
+
+<div id="articles">
+      {{#each articles}}
+      <div class="card rounded">
+            <div class="card-header">
+                  <a href='{{this.link}}'>{{this.title}}</a>
+            </div>
+            <div class="card-body">
+                  <p>{{this.summary}}</p>
+                  <br>
+                  <p class="card-text">click the button to save</p>
+                  <button data-id='{{this._id}}' class="btn btn-info article">Save Article</button>
+            </div>
       </div>
-      
-      <div id="notes"></div>
+      <br>
+      {{/each}}
+</div>
 
-
-      
+<div id="notes"></div>

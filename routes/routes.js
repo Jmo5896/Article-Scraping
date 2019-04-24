@@ -32,7 +32,7 @@ module.exports = function (app) {
     });
 
     app.get('/clearall', function (req, res) {
-        db.Article.deleteMany({ saved: false }).then(function (result) { });
+        db.Article.deleteMany({ saved: false });
     });
 
     app.post('/save', function (req, res) {

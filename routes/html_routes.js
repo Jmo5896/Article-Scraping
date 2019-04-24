@@ -5,7 +5,10 @@ var cheerio = require('cheerio');
 module.exports = function(app) {
     
     app.get("/", function(req, res) {
-        res.render("index");
+        db.Article.find({}).then(function(dbData) {
+            res.render("index", { articles: dbData});
+        })
+        
     });
 
     app.get("/savedArticles", function(req, res) {

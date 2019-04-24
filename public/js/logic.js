@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     $('.onion').on('click', function(event) {
         articleGenerator();
-        setTimeout(reloadPage, 250); 
+        setTimeout(reloadPage, 1000); 
     });
 
     $('.clear').on('click', function(event) {

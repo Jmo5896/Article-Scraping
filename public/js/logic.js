@@ -1,16 +1,21 @@
 $(document).ready(function() {
     let articleData = [];
-    $.get('/articles').then(function(otherData) {
-        otherData.forEach(article => {
-            articleData.push(article.title);
-        })
-    });
+    console.log(articleData);
+
+    function cleardataBase() {
+        console.log('cleared all');
+        $.get('/clearall').then(function(err, result) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    }
 
     function articleGenerator() {
         $.get('/scrape').then(function(data) {
             data.forEach(article => {
                 
-                if (!articleData.includes(article.title, 0)) {
+                // if (!articleData.includes(article.title, 0)) {
                     $('#articles').append(`
                         <div class="card rounded">
                             <div class="card-header">
@@ -25,8 +30,10 @@ $(document).ready(function() {
                         </div>
                         <br>
                     `);
-                } 
+                // } 
             });
+        }).then(function(data) {
+            // cleardataBase();
         }).catch(function(err) {
             console.log(err);
         });
@@ -40,7 +47,7 @@ $(document).ready(function() {
     $('.onion').on('click', function(event) {
         event.preventDefault();
         articleGenerator();
-       
+        // setTimeout(cleardataBase, 5000);
     });
 
     $('#articles').on('click', '.article', function(event) {

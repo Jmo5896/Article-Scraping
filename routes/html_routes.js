@@ -12,7 +12,9 @@ module.exports = function(app) {
     });
 
     app.get("/savedArticles", function(req, res) {
-        res.render("saved");
+        db.Article.find({}).then(function(dbData) {
+            res.render("saved", { articles: dbData});
+        })
     });
  //NO CODE BELOW THIS LINE    
 };

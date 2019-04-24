@@ -12,27 +12,27 @@ $(document).ready(function() {
     }
 
     function articleGenerator() {
-        $.get('/scrape').then(function() {
-            location.reload();
-        }).catch(function(err) {
+        $.get('/scrape').catch(function(err) {
             console.log(err);
         });
         console.log('articleGenerator triggered');
-        $.ajax({
-            type: 'GET',
-            url: "/scrape" 
-        }).done(function() {
-            alert('scrape complete!');
-            location.reload();
-        });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: "/scrape" 
+        // }).done(function() {
+        //     alert('scrape complete!');
+        //     location.reload();
+        // });
     }
 
-    function saveArticles() {
-        
-       
+    function reloadPage() {
+        location.reload();
     }
 
-    $('.onion').on('click', articleGenerator);
+    $('.onion').on('click', function(event) {
+        articleGenerator();
+        setTimeout(reloadPage, 250); 
+    });
 
     $('#articles').on('click', '.article', function(event) {
         event.preventDefault();

@@ -12,19 +12,27 @@
 <h2>Manage your saved articles</h2>
 <br>
 {{#each articles}}
-      {{#if this.saved}}
-            <div class="card rounded">
-                  <div class="card-header">
-                        <a href='{{this.link}}'>{{this.title}}</a>
-                  </div>
-                  <div class="card-body">
-                        <p>{{this.summary}}</p>
-                        <br>
-                        <p class="card-text">click the button to save</p>
+{{#if this.saved}}
+<div class="card rounded">
+      <div class="card-header">
+            <a href='{{this.link}}'>{{this.title}}</a>
+      </div>
+      <div class="card-body">
+            <p>{{this.summary}}</p>
+            <br>
+            <p class="card-text">click the button to save</p>
+            <div class="row">
+                  <div class="col">
                         <button data-id='{{this._id}}' class="btn btn-info article">Save Article</button>
                   </div>
+                  <div class="col">
+                        <button data-id='{{this._id}}' class="btn btn-info delete-saved">delete Article</button>
+                  </div>
             </div>
-            <br>
-      {{/if}}
+
+      </div>
+</div>
+<br>
+{{/if}}
 {{/each}}
 <div id="savedArticles"></div>
